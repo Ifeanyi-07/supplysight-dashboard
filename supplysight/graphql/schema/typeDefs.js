@@ -1,26 +1,3 @@
-// const { gql } = require('apollo-server');
-
-// const typeDefs = gql`
-//   type User {
-//     id: ID!
-//     name: String!
-//     email: String!
-//     role: String!
-//   }
-
-//   type Query {
-//     users: [User]
-//   }
-
-//   type Mutation {
-//     addUser(name: String!, email: String!, role: String!): User
-//     deleteUser(id: ID!): User
-//     updateUser(id: ID!, name: String!, email: String!): User
-//   }
-// `;
-
-// module.exports = typeDefs;
-
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
