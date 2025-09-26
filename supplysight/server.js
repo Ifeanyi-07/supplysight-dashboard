@@ -30,14 +30,45 @@
 // .catch(err => console.error(err));
 
 
+
+
+
+
+
+
+
+// const { ApolloServer } = require('apollo-server');
+// const typeDefs = require('./graphql/schema/typeDefs');
+// const resolvers = require('./graphql/resolvers');
+
+// const server = new ApolloServer({ typeDefs, resolvers });
+
+// server.listen({ port: 4000 }).then(({ url }) => {
+//   console.log(`🚀 Mock API ready at ${url}`);
+// });
+
+
+
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./graphql/schema/typeDefs');
 const resolvers = require('./graphql/resolvers');
 
-const server = new ApolloServer({ typeDefs, resolvers });
+// Use Render's PORT environment variable (or 4000 locally)
+const PORT = process.env.PORT || 4000;
 
-server.listen({ port: 4000 }).then(({ url }) => {
-  console.log(`🚀 Mock API ready at ${url}`);
-});
+async function startServer() {
+  const server = new ApolloServer({ typeDefs, resolvers });
+
+  try {
+    const { url } = await server.listen({ port: PORT });
+    console.log(`🚀 Mock API ready at ${url}`);
+  } catch (err) {
+    console.error("❌ Failed to start Apollo Server:", err);
+  }
+}
+
+startServer();
+
+
 
 
